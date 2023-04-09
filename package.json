@@ -1,0 +1,42 @@
+{
+  "name": "delacy",
+  "version": "1.0.0",
+  "description": "A spiritual successor to AceBot.",
+  "license": "AGPL-3.0-or-later",
+  "author": {
+    "name": "Jarrett Aiken",
+    "email": "jarrett.aiken@achl.fr",
+    "url": "https://achl.fr"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build:dev": "rimraf dist && tsc",
+    "build:prod": "tsc --sourceMap false",
+    "preinstall": "npx only-allow pnpm",
+    "lint:md": "markdownlint-cli2-fix '**/*.md' '#node_modules'",
+    "lint:package": "prettier-package-json --write ./package.json --expand-users true",
+    "lint:ts": "ts-standard --verbose --fix | snazzy",
+    "start": "node dist/index.js",
+    "start:dev": "run-s build:dev start",
+    "test": "nodemon"
+  },
+  "dependencies": {
+    "@sapphire/framework": "^4.2.2",
+    "common-tags": "^1.8.2",
+    "discord.js": "^14.9.0",
+    "dotenv": "^16.0.3"
+  },
+  "devDependencies": {
+    "@types/common-tags": "^1.8.1",
+    "@types/node": "^18.15.11",
+    "markdownlint-cli2": "^0.6.0",
+    "nodemon": "^2.0.22",
+    "npm-run-all": "^4.1.5",
+    "prettier-package-json": "^2.8.0",
+    "rimraf": "^4.4.1",
+    "snazzy": "^9.0.0",
+    "ts-standard": "^12.0.2",
+    "typescript": "^5.0.4"
+  }
+}

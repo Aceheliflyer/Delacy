@@ -1,0 +1,9 @@
+version: '3.9'
+
+services:
+  delacy:
+    build:
+      context: .
+    env_file: .env
+    environment:
+      NODE_ENV: production
