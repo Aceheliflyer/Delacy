@@ -1,11 +1,15 @@
 import { ApplicationCommandRegistries, RegisterBehavior, SapphireClient, LogLevel } from '@sapphire/framework'
+import { GatewayIntentBits } from 'discord.js'
 import * as dotenv from 'dotenv'; dotenv.config()
 
 process.env.NODE_ENV ??= 'development'
 
 const client = new SapphireClient({
   loadMessageCommandListeners: true,
-  intents: [],
+  intents: [
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.GuildMembers
+  ],
   logger: {
     level: (
       process.env.NODE_ENV === 'development'
