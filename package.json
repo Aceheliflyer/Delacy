@@ -12,7 +12,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build:dev": "rimraf dist && tsc",
-    "build:prod": "tsc --sourceMap false",
+    "build:prod": "tsc",
     "preinstall": "npx only-allow pnpm",
     "lint:md": "markdownlint-cli2-fix '**/*.md' '#node_modules'",
     "lint:package": "prettier-package-json --write ./package.json --expand-users true",
