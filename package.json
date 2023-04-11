@@ -13,13 +13,21 @@
   "scripts": {
     "build:dev": "rimraf dist && tsc",
     "build:prod": "tsc",
+    "commit": "cz",
     "preinstall": "npx only-allow pnpm",
     "lint:md": "markdownlint-cli2-fix '**/*.md' '#node_modules'",
     "lint:package": "prettier-package-json --write ./package.json --expand-users true",
     "lint:ts": "ts-standard --verbose --fix | snazzy",
+    "prepare": "husky install",
+    "release": "standard-version",
     "spellcheck": "cspell . --dot",
     "start": "node dist/index.js",
     "start:dev": "tsc-watch --onSuccess 'node dist/index.js'"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "dependencies": {
     "@sapphire/framework": "^4.3.1",
@@ -28,13 +36,19 @@
     "dotenv": "^16.0.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^17.5.1",
+    "@commitlint/config-conventional": "^17.4.4",
     "@types/common-tags": "^1.8.1",
     "@types/node": "^18.15.11",
+    "commitizen": "^4.3.0",
     "cspell": "^6.31.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
     "markdownlint-cli2": "^0.6.0",
     "prettier-package-json": "^2.8.0",
     "rimraf": "^5.0.0",
     "snazzy": "^9.0.0",
+    "standard-version": "^9.5.0",
     "ts-standard": "^12.0.2",
     "tsc-watch": "^6.0.0",
     "typescript": "^5.0.4"
