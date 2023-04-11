@@ -1,0 +1,15 @@
+---
+version: '0.2'
+language: 'en'
+words:
+  - 'adduser'
+  - 'codepaths'
+  - 'delacy'
+  - 'preinstall'
+  - 'tsbuildinfo'
+ignorePaths:
+  - '.env'
+  - '.git'
+  - '.gitignore'
+  - '.tsbuildinfo'
+  - 'pnpm-lock.yaml'
