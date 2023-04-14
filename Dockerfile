@@ -5,7 +5,7 @@ FROM alpine:latest AS base
 LABEL maintainer="jarrett.aiken@achl.fr"
 
 ARG _USER="delacy"
-ARG BOT_DIR="/home/${_USER}/bot"
+ARG _WORKDIR="/home/${_USER}/bot"
 
 RUN \
   apk -U upgrade --no-cache \
@@ -14,8 +14,8 @@ RUN \
   && adduser -D ${_USER} ${_USER}
 
 USER ${_USER}
-RUN mkdir ${BOT_DIR}
-WORKDIR ${BOT_DIR}
+RUN mkdir ${_WORKDIR}
+WORKDIR ${_WORKDIR}
 
 ########################################################################################################################
 # Development
