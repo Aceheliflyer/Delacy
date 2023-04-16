@@ -21,7 +21,7 @@ export class PingCommand extends Command {
     const discordTObotLatency = Date.now() - interaction.createdTimestamp
 
     const embed = new EmbedBuilder()
-      .setColor(interaction.guild?.members.me?.displayHexColor ?? 0x7289DA)
+      .setColor(interaction.guild?.members.me?.displayHexColor ?? 'Blue')
       .setDescription('Pinging...')
 
     let botTOdiscordLatency = Date.now()
