@@ -37,10 +37,10 @@ RUN \
 ########################################################################################################################
 FROM base AS prod
 
-COPY --from=dev --chown=${_USER}:${_USER} ${BOT_DIR}/pnpm-lock.yaml ./
+COPY --from=dev --chown=${_USER}:${_USER} ${_WORKDIR}/pnpm-lock.yaml ./
 RUN pnpm fetch --prod
 
-COPY --from=dev --chown=${_USER}:${_USER} ${BOT_DIR}/archive.tar ./
+COPY --from=dev --chown=${_USER}:${_USER} ${_WORKDIR}/archive.tar ./
 RUN \
   tar -xf archive.tar && rm archive.tar \
   && pnpm i --offline --prod
