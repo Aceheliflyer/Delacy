@@ -1,10 +1,10 @@
----
 version: '0.2'
 language: 'en'
 words:
   - 'adduser'
   - 'codepaths'
   - 'delacy'
+  - 'ksmithut'
   - 'preinstall'
   - 'tsbuildinfo'
 ignorePaths:
@@ -12,4 +12,5 @@ ignorePaths:
   - '.git'
   - '.gitignore'
   - '.tsbuildinfo'
+  - '.vscode'
   - 'pnpm-lock.yaml'

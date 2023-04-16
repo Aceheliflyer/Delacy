@@ -13,12 +13,14 @@ export class BotOwnerOnlyPrecondition extends Precondition {
   }
 
   // Context menu
-  public override async contextMenuRun (interaction: ContextMenuCommandInteraction): Promise<Result<unknown, UserError>> {
+  public override async contextMenuRun (
+    interaction: ContextMenuCommandInteraction
+  ): Promise<Result<unknown, UserError>> {
     return await this.checkOwner(interaction.user.id)
   }
 
   private async checkOwner (userId: string): Promise<Result<unknown, UserError>> {
-    return await this.container.client.application?.fetch().then(app => app.owner?.id) === userId
+    return (await this.container.client.application?.fetch().then(app => app.owner?.id)) === userId
       ? await this.ok()
       : await this.error({ message: 'Only the bot owner can use this command!' })
   }

@@ -11,14 +11,16 @@ export class EvalCommand extends Command {
   }
 
   public override registerApplicationCommands (registry: Command.Registry): void {
-    registry.registerChatInputCommand(builder => builder
-      .setName(this.name)
-      .setDescription(this.description)
-      .addStringOption(option => option
-        .setName('code')
-        .setDescription('What code would you like to evaluate?')
-        .setRequired(true)
-      )
+    registry.registerChatInputCommand(builder =>
+      builder //
+        .setName(this.name)
+        .setDescription(this.description)
+        .addStringOption(option =>
+          option //
+            .setName('code')
+            .setDescription('What code would you like to evaluate?')
+            .setRequired(true)
+        )
     )
   }
 
@@ -41,28 +43,31 @@ export class EvalCommand extends Command {
     if (success) {
       return await interaction.editReply({
         content: '',
-        embeds: [embed
-          .setColor('Green')
-          .addFields([
-            { name: 'Result', value: '```js\n' + this._clean(result.toString()) + '\n```' },
-            { name: 'Type', value: '```js\n' + this._clean(typeof result) + '\n```' }
-          ])
+        embeds: [
+          embed //
+            .setColor('Green')
+            .addFields([
+              { name: 'Result', value: '```js\n' + this._clean(result.toString()) + '\n```' },
+              { name: 'Type', value: '```js\n' + this._clean(typeof result) + '\n```' }
+            ])
         ]
       })
     } else {
       return await interaction.editReply({
         content: '',
-        embeds: [embed
-          .setColor('Red')
-          .addFields([
-            { name: 'Exception', value: '```js\n' + this._clean(result.toString()) + '\n```' }
-          ])
+        embeds: [
+          embed //
+            .setColor('Red')
+            .addFields([{ name: 'Exception', value: '```js\n' + this._clean(result.toString()) + '\n```' }])
         ]
       })
     }
   }
 
-  private async _eval (code: string, interaction: Command.ChatInputCommandInteraction): Promise<{ result: any, evalTime: [number, number], success: boolean }> {
+  private async _eval (
+    code: string,
+    interaction: Command.ChatInputCommandInteraction
+  ): Promise<{ result: any, evalTime: [number, number], success: boolean }> {
     /* eslint-disable */
     const message = interaction
     const channel = interaction.channel

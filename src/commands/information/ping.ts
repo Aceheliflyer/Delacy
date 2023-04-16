@@ -11,9 +11,10 @@ export class PingCommand extends Command {
   }
 
   public override registerApplicationCommands (registry: Command.Registry): void {
-    registry.registerChatInputCommand(builder => builder
-      .setName(this.name)
-      .setDescription(this.description)
+    registry.registerChatInputCommand(builder =>
+      builder //
+        .setName(this.name)
+        .setDescription(this.description)
     )
   }
 
@@ -30,12 +31,14 @@ export class PingCommand extends Command {
 
     return await interaction.editReply({
       content: '',
-      embeds: [embed.setDescription(stripIndents`
-        Bot \u2BAB Discord: \`${botTOdiscordLatency}ms\`
-        Bot \u2BA8 Discord: \`${discordTObotLatency}ms\`
-        Total Latency: \`${discordTObotLatency + botTOdiscordLatency}ms\`
-        Socket Heartbeat: \`${this.container.client.ws.ping}ms\`
-      `)]
+      embeds: [
+        embed.setDescription(stripIndents`
+          Bot \u2BAB Discord: \`${botTOdiscordLatency}ms\`
+          Bot \u2BA8 Discord: \`${discordTObotLatency}ms\`
+          Total Latency: \`${discordTObotLatency + botTOdiscordLatency}ms\`
+          Socket Heartbeat: \`${this.container.client.ws.ping}ms\`
+        `)
+      ]
     })
   }
 }
