@@ -32,7 +32,7 @@
     "start:dev": "tsc-watch --onSuccess 'node dist/index.js'"
   },
   "dependencies": {
-    "@sapphire/framework": "^4.4.0",
+    "@sapphire/framework": "^4.4.1",
     "common-tags": "^1.8.2",
     "discord.js": "^14.9.0",
     "dotenv": "^16.0.3"
@@ -40,7 +40,7 @@
   "devDependencies": {
     "@ksmithut/prettier-standard": "^0.1.6",
     "@types/common-tags": "^1.8.1",
-    "@types/node": "^18.15.11",
+    "@types/node": "^18.15.12",
     "cspell": "^6.31.1",
     "markdownlint-cli2": "^0.6.0",
     "npm-run-all": "^4.1.5",
