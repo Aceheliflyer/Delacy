@@ -26,11 +26,10 @@ export class PingCommand extends Command {
       .setDescription('Pinging...')
 
     let botTOdiscordLatency = Date.now()
-    await interaction.reply({ content: '', embeds: [embed] })
+    await interaction.reply({ embeds: [embed] })
     botTOdiscordLatency = Date.now() - botTOdiscordLatency
 
     return await interaction.editReply({
-      content: '',
       embeds: [
         embed.setDescription(stripIndents`
           Bot \u2BAB Discord: \`${botTOdiscordLatency}ms\`

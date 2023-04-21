@@ -1,5 +1,8 @@
 import { Command } from '@sapphire/framework'
 import { EmbedBuilder, Message } from 'discord.js'
+import { runInNewContext } from 'vm'
+import { inspect } from 'util'
+import { oneLine } from 'common-tags'
 
 export class EvalCommand extends Command {
   public constructor (context: Command.Context, options: Command.Options) {
@@ -29,7 +32,7 @@ export class EvalCommand extends Command {
       .setColor(interaction.guild?.members.me?.displayHexColor ?? 'Blue')
       .setDescription('Pending...')
 
-    await interaction.reply({ content: '', embeds: [embed] })
+    await interaction.reply({ embeds: [embed] })
     const code = interaction.options.getString('code', true)
     const { result, evalTime, success } = await this._eval(code, interaction)
 
@@ -42,23 +45,21 @@ export class EvalCommand extends Command {
 
     if (success) {
       return await interaction.editReply({
-        content: '',
         embeds: [
           embed //
             .setColor('Green')
             .addFields([
-              { name: 'Result', value: '```js\n' + this._clean(result.toString()) + '\n```' },
-              { name: 'Type', value: '```js\n' + this._clean(typeof result) + '\n```' }
+              { name: 'Result', value: '```js\n' + this._clean(this._expand(result)) + '\n```' },
+              { name: 'Type', value: '```js\n' + this._clean(this._type(result)) + '\n```' }
             ])
         ]
       })
     } else {
       return await interaction.editReply({
-        content: '',
         embeds: [
           embed //
             .setColor('Red')
-            .addFields([{ name: 'Exception', value: '```js\n' + this._clean(result.toString()) + '\n```' }])
+            .addFields([{ name: 'Exception', value: '```js\n' + this._clean(String(result)) + '\n```' }])
         ]
       })
     }
@@ -68,18 +69,20 @@ export class EvalCommand extends Command {
     code: string,
     interaction: Command.ChatInputCommandInteraction
   ): Promise<{ result: any, evalTime: [number, number], success: boolean }> {
-    /* eslint-disable */
-    const message = interaction
-    const channel = interaction.channel
-    const guild = interaction.guild
-    const client = interaction.client
-    /* eslint-enable */
-
     let result, evalTime, success
 
     evalTime = process.hrtime()
     try {
-      result = await eval(code) // eslint-disable-line no-eval
+      result = runInNewContext(code, {
+        this: this,
+        process,
+        interaction,
+        message: interaction,
+        channel: interaction.channel,
+        guild: interaction.guild,
+        client: interaction.client,
+        container: this.container
+      })
       success = true
     } catch (error) {
       result = error
@@ -91,16 +94,40 @@ export class EvalCommand extends Command {
   }
 
   private _clean (text: string): string {
-    const replaceStrings = [
-      [this.container.client.token ?? '', '[TOKEN]'],
-      ['```', '`\u200B`\u200B`\u200B']
-    ]
-
-    for (let i = 0; i < replaceStrings.length; i++) {
-      const str = replaceStrings[i]
-      text = text.replaceAll(str[0], str[1])
-    }
-
+    const token = this.container.client.token ?? ''
+    const tokenRegex = new RegExp(
+      `${token.split('').join('[^]{0,}')}|${token.split('').reverse().join('[^]{0,}')}`,
+      'gi'
+    )
+    text = text.replaceAll(tokenRegex, '[TOKEN]')
+    text = text.replaceAll('```', '`\u200B`\u200B`\u200B')
     return text
+  }
+
+  private _expand (content: any): string {
+    if (typeof content === 'function') return String(content)
+    return inspect(content, {
+      showHidden: true,
+      compact: false,
+      depth: 0
+    })
+  }
+
+  private _type (content: unknown): string {
+    switch (typeof content) {
+      case 'object':
+        if (content === null) return `object - ${typeof content}`
+        return `object - ${content.constructor.name}`
+      case 'function':
+        return oneLine`
+          function
+          ${content.name !== null || content.length !== null ? '-' : ''}
+          ${content.name !== null ? `Name: ${content.name}` : ''}
+          ${content.name !== null && content.length !== null ? '|' : ''}
+          ${content.length !== null ? `#Args: ${content.length}` : ''}
+        `
+      default:
+        return typeof content
+    }
   }
 }

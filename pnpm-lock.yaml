@@ -33,8 +33,8 @@ devDependencies:
     specifier: ^6.31.1
     version: 6.31.1
   markdownlint-cli2:
-    specifier: ^0.6.0
-    version: 0.6.0
+    specifier: ^0.7.0
+    version: 0.7.0
   npm-run-all:
     specifier: ^4.1.5
     version: 4.1.5
@@ -153,7 +153,7 @@ packages:
       '@cspell/dict-django': 4.0.2
       '@cspell/dict-docker': 1.1.6
       '@cspell/dict-dotnet': 5.0.0
-      '@cspell/dict-elixir': 4.0.2
+      '@cspell/dict-elixir': 4.0.3
       '@cspell/dict-en-common-misspellings': 1.0.2
       '@cspell/dict-en-gb': 1.1.33
       '@cspell/dict-en_us': 4.3.2
@@ -252,8 +252,8 @@ packages:
     resolution: {integrity: sha512-EOwGd533v47aP5QYV8GlSSKkmM9Eq8P3G/eBzSpH3Nl2+IneDOYOBLEUraHuiCtnOkNsz0xtZHArYhAB2bHWAw==}
     dev: true
 
-  /@cspell/dict-elixir@4.0.2:
-    resolution: {integrity: sha512-/YeHlpZ1pE9VAyxp3V0xyUPapNyC61WwFuw2RByeoMqqYaIfS3Hw+JxtimOsAKVhUvgUH58zyKl5K5Q6FqgCpw==}
+  /@cspell/dict-elixir@4.0.3:
+    resolution: {integrity: sha512-g+uKLWvOp9IEZvrIvBPTr/oaO6619uH/wyqypqvwpmnmpjcfi8+/hqZH8YNKt15oviK8k4CkINIqNhyndG9d9Q==}
     dev: true
 
   /@cspell/dict-en-common-misspellings@1.0.2:
@@ -436,7 +436,7 @@ packages:
       discord-api-types: 0.37.39
       file-type: 18.2.1
       tslib: 2.5.0
-      undici: 5.21.2
+      undici: 5.22.0
     dev: false
 
   /@discordjs/util@0.2.0:
@@ -1590,7 +1590,7 @@ packages:
       fast-deep-equal: 3.1.3
       lodash.snakecase: 4.1.1
       tslib: 2.5.0
-      undici: 5.21.2
+      undici: 5.22.0
       ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
@@ -2376,17 +2376,6 @@ packages:
       slash: 3.0.0
     dev: true
 
-  /globby@13.1.3:
-    resolution: {integrity: sha512-8krCNHXvlCgHDpegPzleMq07yMYTO2sXKASmZmquEYWEmCx6J5UTRbp5RwMJkTJGtcQ44YpiUYUiN0b9mzy8Bw==}
-    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dependencies:
-      dir-glob: 3.0.1
-      fast-glob: 3.2.12
-      ignore: 5.2.4
-      merge2: 1.4.1
-      slash: 4.0.0
-    dev: true
-
   /globby@13.1.4:
     resolution: {integrity: sha512-iui/IiiW+QrJ1X1hKH5qwlMQyv34wJAYwH1vrf8b9kBA4sNiif3gKsMHa+BrdnOpEudWjpotfa7LrTzB1ERS/g==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
@@ -3029,32 +3018,38 @@ packages:
       uc.micro: 1.0.6
     dev: true
 
-  /markdownlint-cli2-formatter-default@0.0.3(markdownlint-cli2@0.6.0):
-    resolution: {integrity: sha512-QEAJitT5eqX1SNboOD+SO/LNBpu4P4je8JlR02ug2cLQAqmIhh8IJnSK7AcaHBHhNADqdGydnPpQOpsNcEEqCw==}
+  /markdownlint-cli2-formatter-default@0.0.4(markdownlint-cli2@0.7.0):
+    resolution: {integrity: sha512-xm2rM0E+sWgjpPn1EesPXx5hIyrN2ddUnUwnbCsD/ONxYtw3PX6LydvdH6dciWAoFDpwzbHM1TO7uHfcMd6IYg==}
     peerDependencies:
       markdownlint-cli2: '>=0.0.4'
     dependencies:
-      markdownlint-cli2: 0.6.0
+      markdownlint-cli2: 0.7.0
     dev: true
 
-  /markdownlint-cli2@0.6.0:
-    resolution: {integrity: sha512-Bv20r6WGdcHMWi8QvAFZ3CBunf4i4aYmVdTfpAvXODI/1k3f09DZZ0i0LcX9ZMhlVxjoOzbVDz1NWyKc5hwTqg==}
+  /markdownlint-cli2@0.7.0:
+    resolution: {integrity: sha512-67r1t9ep+z0fa6g9TgL3tiPQeWo297ip165Et2u54UquJAkXWnq6e+dXFBjSPft/iLaGJfU0fUHXhXueqNUkGQ==}
     engines: {node: '>=14.18.0'}
     hasBin: true
     dependencies:
-      globby: 13.1.3
-      markdownlint: 0.27.0
-      markdownlint-cli2-formatter-default: 0.0.3(markdownlint-cli2@0.6.0)
+      globby: 13.1.4
+      markdownlint: 0.28.1
+      markdownlint-cli2-formatter-default: 0.0.4(markdownlint-cli2@0.7.0)
       micromatch: 4.0.5
       strip-json-comments: 5.0.0
       yaml: 2.2.1
     dev: true
 
-  /markdownlint@0.27.0:
-    resolution: {integrity: sha512-HtfVr/hzJJmE0C198F99JLaeada+646B5SaG2pVoEakLFI6iRGsvMqrnnrflq8hm1zQgwskEgqSnhDW11JBp0w==}
+  /markdownlint-micromark@0.1.2:
+    resolution: {integrity: sha512-jRxlQg8KpOfM2IbCL9RXM8ZiYWz2rv6DlZAnGv8ASJQpUh6byTBnEsbuMZ6T2/uIgntyf7SKg/mEaEBo1164fQ==}
+    engines: {node: '>=14.18.0'}
+    dev: true
+
+  /markdownlint@0.28.1:
+    resolution: {integrity: sha512-8At2DbgGKT/RVBinkqIPqLETopPXyQFGWSiTCJSr9Y6wVVyY70cDJ9dw3FXePn4AkytIUclgrsgI6KVeqeHFoA==}
     engines: {node: '>=14.18.0'}
     dependencies:
       markdown-it: 13.0.1
+      markdownlint-micromark: 0.1.2
     dev: true
 
   /mdurl@1.0.1:
@@ -4419,9 +4414,9 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /undici@5.21.2:
-    resolution: {integrity: sha512-f6pTQ9RF4DQtwoWSaC42P/NKlUjvezVvd9r155ohqkwFNRyBKM3f3pcty3ouusefNRyM25XhIQEbeQ46sZDJfQ==}
-    engines: {node: '>=12.18'}
+  /undici@5.22.0:
+    resolution: {integrity: sha512-fR9RXCc+6Dxav4P9VV/sp5w3eFiSdOjJYsbtWfd4s5L5C4ogyuVpdKIVHeW0vV1MloM65/f7W45nR9ZxwVdyiA==}
+    engines: {node: '>=14.0'}
     dependencies:
       busboy: 1.6.0
     dev: false
