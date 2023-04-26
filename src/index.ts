@@ -6,6 +6,7 @@ import {
   SapphireClient
 } from '@sapphire/framework'
 import { GatewayIntentBits } from 'discord.js'
+import { hrtime } from 'process'
 import * as dotenv from 'dotenv'
 dotenv.config()
 
@@ -22,11 +23,11 @@ ApplicationCommandRegistries.setDefaultBehaviorWhenNotIdentical(RegisterBehavior
 try {
   container.logger.info('SapphireClient: Logging in...')
 
-  let diff = process.hrtime()
+  let diff: bigint | number = hrtime.bigint()
   await client.login(process.env.DISCORD_TOKEN)
-  diff = process.hrtime(diff)
+  diff = Number(hrtime.bigint() - diff)
 
-  container.logger.info(`SapphireClient: Took ${diff[0] * 1e3 + Math.round(diff[1] / 1e6)}ms to login.`)
+  container.logger.info(`SapphireClient: Took ${Math.round(diff / 1e6).toLocaleString()}ms to login.`)
 } catch (error) {
   container.logger.fatal(error)
   client.destroy()

@@ -68,10 +68,10 @@ export class EvalCommand extends Command {
   private async _eval (
     code: string,
     interaction: Command.ChatInputCommandInteraction
-  ): Promise<{ result: any, evalTime: [number, number], success: boolean }> {
-    let result, evalTime, success
+  ): Promise<{ result: unknown, evalTime: [number, number], success: boolean }> {
+    let result: unknown, evalTime: bigint | number | [number, number], success: boolean
 
-    evalTime = process.hrtime()
+    evalTime = process.hrtime.bigint()
     try {
       result = runInNewContext(code, {
         this: this,
@@ -88,7 +88,8 @@ export class EvalCommand extends Command {
       result = error
       success = false
     }
-    evalTime = process.hrtime(evalTime)
+    evalTime = Number(process.hrtime.bigint() - evalTime)
+    evalTime = [evalTime / 1e9, evalTime / 1e6]
 
     return { result, evalTime, success }
   }
@@ -104,7 +105,7 @@ export class EvalCommand extends Command {
     return text
   }
 
-  private _expand (content: any): string {
+  private _expand (content: unknown): string {
     if (typeof content === 'function') return String(content)
     return inspect(content, {
       showHidden: true,
