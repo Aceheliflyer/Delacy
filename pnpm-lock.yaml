@@ -1,5 +1,9 @@
 lockfileVersion: '6.0'
 
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
 overrides:
   json5@>=2.0.0 <2.2.2: '>=2.2.2'
   minimist@>=1.0.0 <1.2.6: '>=1.2.6'
@@ -436,7 +440,7 @@ packages:
       discord-api-types: 0.37.40
       file-type: 18.3.0
       tslib: 2.5.0
-      undici: 5.22.0
+      undici: 5.26.3
     dev: false
 
   /@discordjs/util@0.2.0:
@@ -480,6 +484,11 @@ packages:
     resolution: {integrity: sha512-kf9RB0Fg7NZfap83B3QOqOGg9QmD9yBudqQXzzOtn3i4y7ZUXe5ONeW34Gwi+TxhH4mvj72R1Zc300KUMa9Bng==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fastify/busboy@2.0.0:
+    resolution: {integrity: sha512-JUFJad5lv7jxj926GPgymrWQxxjPYuJNiNjNMzqT+HiuP6Vl3dk5xzG+8sTX96np0ZAluvaMzPsjhHZ5rNuNQQ==}
+    engines: {node: '>=14'}
+    dev: false
 
   /@glimmer/env@0.1.7:
     resolution: {integrity: sha512-JKF/a9I9jw6fGoz8kA7LEQslrwJ5jms5CXhu/aqkBWk+PmZ6pTl8mlb/eJ/5ujBGTiQzBhy5AIWF712iA+4/mw==}
@@ -1118,13 +1127,6 @@ packages:
       semver: 7.5.0
     dev: true
 
-  /busboy@1.6.0:
-    resolution: {integrity: sha512-8SFQbg/0hQ9xy3UNTB0YEnsNBbWfhf7RtnzpL7TkBiTBRfrQ9Fxcnz7VJsleJpyp6rVLvXiuORqjlHi5q+PYuA==}
-    engines: {node: '>=10.16.0'}
-    dependencies:
-      streamsearch: 1.1.0
-    dev: false
-
   /call-bind@1.0.2:
     resolution: {integrity: sha512-7O+FbCihrB5WGbFYesctwmTKae6rOiIzmz1icreWJ+0aA7LJfuqhEso2T9ncpcFtzMQtzXf2QGGueWJGTYsqrA==}
     dependencies:
@@ -1590,7 +1592,7 @@ packages:
       fast-deep-equal: 3.1.3
       lodash.snakecase: 4.1.1
       tslib: 2.5.0
-      undici: 5.22.0
+      undici: 5.26.3
       ws: 8.13.0
     transitivePeerDependencies:
       - bufferutil
@@ -3669,7 +3671,7 @@ packages:
       minimist: 1.2.8
       n-readlines: 1.0.1
       outdent: 0.8.0
-      parse-srcset: github.com/ikatyang/parse-srcset/54eb9c1cb21db5c62b4d0e275d7249516df6f0ee
+      parse-srcset: git@github.com+ikatyang/parse-srcset/54eb9c1cb21db5c62b4d0e275d7249516df6f0ee
       please-upgrade-node: 3.2.0
       postcss: 8.3.5
       postcss-less: 4.0.1
@@ -4082,11 +4084,6 @@ packages:
       duplexer: 0.1.2
     dev: true
 
-  /streamsearch@1.1.0:
-    resolution: {integrity: sha512-Mcc5wHehp9aXz1ax6bZUyY5afg9u2rv5cqQI3mRrYkGC8rW2hM02jWuwjtL++LS5qinSyhj2QfLyNsuc+VsExg==}
-    engines: {node: '>=10.0.0'}
-    dev: false
-
   /string-argv@0.3.1:
     resolution: {integrity: sha512-a1uQGz7IyVy9YwhqjZIZu1c8JO8dNIe20xBmSS6qu9kv++k3JGzCVmprbNN5Kn+BgzD5E7YYwg1CcjuJMRNsvg==}
     engines: {node: '>=0.6.19'}
@@ -4413,11 +4410,11 @@ packages:
       which-boxed-primitive: 1.0.2
     dev: true
 
-  /undici@5.22.0:
-    resolution: {integrity: sha512-fR9RXCc+6Dxav4P9VV/sp5w3eFiSdOjJYsbtWfd4s5L5C4ogyuVpdKIVHeW0vV1MloM65/f7W45nR9ZxwVdyiA==}
+  /undici@5.26.3:
+    resolution: {integrity: sha512-H7n2zmKEWgOllKkIUkLvFmsJQj062lSm3uA4EYApG8gLuiOM0/go9bIoC3HVaSnfg4xunowDE2i9p8drkXuvDw==}
     engines: {node: '>=14.0'}
     dependencies:
-      busboy: 1.6.0
+      '@fastify/busboy': 2.0.0
     dev: false
 
   /unherit@1.1.3:
@@ -4708,8 +4705,8 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  github.com/ikatyang/parse-srcset/54eb9c1cb21db5c62b4d0e275d7249516df6f0ee:
-    resolution: {tarball: https://codeload.github.com/ikatyang/parse-srcset/tar.gz/54eb9c1cb21db5c62b4d0e275d7249516df6f0ee}
+  git@github.com+ikatyang/parse-srcset/54eb9c1cb21db5c62b4d0e275d7249516df6f0ee:
+    resolution: {commit: 54eb9c1cb21db5c62b4d0e275d7249516df6f0ee, repo: git@github.com:ikatyang/parse-srcset.git, type: git}
     name: parse-srcset
     version: 1.0.2
     dev: true
