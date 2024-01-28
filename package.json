@@ -8,13 +8,13 @@
     "email": "jarrett.aiken@achl.fr",
     "url": "https://achl.fr"
   },
-  "homepage": "https://github.com/Aceheliflyer/DeLacy#readme",
+  "homepage": "https://github.com/AriRexouium/DeLacy#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Aceheliflyer/DeLacy.git"
+    "url": "git+https://github.com/AriRexouium/DeLacy.git"
   },
   "bugs": {
-    "url": "https://github.com/Aceheliflyer/DeLacy/issues"
+    "url": "https://github.com/AriRexouium/DeLacy/issues"
   },
   "type": "module",
   "main": "dist/index.js",

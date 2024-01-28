@@ -6,7 +6,7 @@ LABEL \
   fr.achl.delacy.description="A spiritual successor to AceBot." \
   fr.achl.delacy.license="AGPL-3.0-or-later" \
   fr.achl.delacy.maintainer="Jarrett Aiken <jarrett.aiken@achl.fr> (https://achl.fr)" \
-  fr.achl.delacy.source="https://github.com/Aceheliflyer/DeLacy.git" \
+  fr.achl.delacy.source="https://github.com/AriRexouium/DeLacy.git" \
   fr.achl.delacy.version="1.0.0"
 
 ARG _USER="delacy"
